@@ -14,7 +14,18 @@ class App extends Component {
     };
 
     buttonClickHandler() {
-   
+   this.setState({ renderBall: true });
+      document.addEventListener("keydown",(event)=>{
+        if (event.keyCode === 39) {
+      
+        this.setState((prevState) => {
+          const currentLeft = parseInt(prevState.ballPosition.left, 10);
+          return {
+            ballPosition: { left: currentLeft + 5 + "px" }
+          };
+        });
+      }
+      })
    }
     renderBallOrButton() {
 		if (this.state.renderBall) {
